@@ -185,12 +185,67 @@ body {
 
 .dairy__day {
   color: #404040;
+
+  .day__item {
+    cursor: pointer;
+
+    &.item--name {
+      padding-left: 15px;
+    }
+
+    &.item--weight {
+      width: 80px;
+    }
+
+    &.item--calory {
+      width: 80px;
+    }
+
+    &.item--value {
+      width: 140px;
+    }
+  }
+
+  .day__item--header {
+    display: inline-block;
+
+    &.item--weight {
+      width: 76px;
+    }
+
+    &.item--calory {
+      width: 76px;
+    }
+
+    &.item--value {
+      width: 116px;
+    }
+  }
 }
 
 .dairy__total {
   float: right;
-  font-style: italic;
   margin-right: 16px;
+
+  .total__item {
+    display: inline-block;
+
+    &.item--title {
+      width: 60px;
+    }
+
+    &.item--weight {
+      width: 76px;
+    }
+
+    &.item--calory {
+      width: 76px;
+    }
+
+    &.item--value {
+      width: 116px;
+    }
+  }
 }
 
 .link--local {
@@ -203,9 +258,8 @@ body {
 
 .heading__item {
   display: inline-block;
+}
 
-  &.item__value {
-    float: right;
-    font-style: italic;
-  }
+.heading__item--right {
+  float: right;
 }
