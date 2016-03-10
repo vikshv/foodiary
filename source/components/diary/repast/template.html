@@ -1,0 +1,22 @@
+<div class="dairy__day">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="heading__item item__name">
+                <span class="link--local" ng-click="$ctrl.onClickRepast()">{{ $ctrl.repast.name }}</span>
+            </div>
+            <div class="heading__item heading__item--right">
+                <div class="day__item--header item--weight">{{ $ctrl.getRepastWeight($ctrl.repast.data) }} г.</div>
+                <div class="day__item--header item--calory">{{ $ctrl.getRepastCalory($ctrl.repast.data) }} ккал</div>
+                <div class="day__item--header item--value">{{ $ctrl.getRepastProtein($ctrl.repast.data) }} / {{ $ctrl.getRepastFat($ctrl.repast.data)}} / {{ $ctrl.getRepastCarbs($ctrl.repast.data) }}</div>
+            </div>
+        </div>
+        <table ng-if="$ctrl.isOpen" class="table table-hover table-bordered animate-if">
+            <tr ng-repeat="item in $ctrl.repast.data">
+                <td class="day__item item--name">{{ item.name }}</td>
+                <td class="day__item item--weight">{{ item.weight }} г.</td>
+                <td class="day__item item--calory">{{ item.calory }} ккал</td>
+                <td class="day__item item--value">{{ item.protein }} / {{ item.fat }} / {{ item.carbs }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

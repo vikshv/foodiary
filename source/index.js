@@ -1,30 +1,20 @@
 import './style.less';
 
-import 'angular';
-import 'angular-route';
-import './controllers';
-import './diary.js';
-
-import homeTemplate from './templates/home.html';
-import diaryTemplate from './templates/diary.html';
-import aboutTemplate from './templates/about.html';
-
-
-const app = angular.module('foodiaryApp', ['ngRoute', 'foodiaryControllers', 'diary']);
+import app from './app';
+import home from './components/home';
+import diary from './components/diary';
+import about from './components/about';
 
 app.config(['$routeProvider', $routeProvider => {
     $routeProvider.
         when('/home', {
-            template: homeTemplate,
-            controller: 'HomeCtrl',
+            template: '<home><home>',
         }).
         when('/diary', {
-            template: diaryTemplate,
-            controller: 'DiaryCtrl',
+            template: '<diary></diary>',
         }).
         when('/about', {
-            template: aboutTemplate,
-            controller: 'AboutCtrl',
+            template: '<about></about>',
         }).
         otherwise({
             redirectTo: '/home',

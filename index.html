@@ -23,9 +23,36 @@
         <link rel="shortcut icon" href="./ico/favicon.png">
     </head>
 
-    <body class="foodiary" ng-app="foodiaryApp">
-        
-        <div class="site-wrapper" ng-view></div>
+    <body class="foodiary" ng-app="app">
+        <div class="site-wrapper">
+            <div class="site-wrapper-inner">
+                <div class="cover-container">
+
+                    <div class="masthead clearfix">
+                        <div class="inner">
+                            <h3 class="masthead-brand"><i class="fa fa-book"></i> Foodiary</h3>
+                            <nav>
+                                <ul class="nav masthead-nav">
+                                    <li class="active"><a href="#home">Home</a></li>
+                                    <li><a href="#diary">Diary</a></li>
+                                    <li><a href="#about">About</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div ng-view></div>
+                    
+                    
+                    <div class="mastfoot">
+                        <div class="inner">
+                            <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         
         <script src="./public/foodiary.js"></script>
     </body>

@@ -1,0 +1,29 @@
+<div class="dairy">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <button type="button" class="btn btn-default active" ng-click="$ctrl.onClickToday()">Today</button>
+                <button type="button" class="btn btn-default" ng-click="$ctrl.onClickTomorrow()">Tomorrow</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-repeat="repast in $ctrl.repasts">
+        <div class="col-md-12">
+            <repast repast="repast"></repast>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-footer">
+                <div class="dairy__total">
+                    <div class="total__item item--title">Total:</div>
+                    <div class="total__item item--weight">{{ $ctrl.getRepastWeight() }} г.</div>
+                    <div class="total__item item--calory">{{ $ctrl.getRepastCalory() }} ккал</div>
+                    <div class="total__item item--value">{{ $ctrl.getRepastProtein() }} / {{ $ctrl.getRepastFat() }} / {{ $ctrl.getRepastCarbs() }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
