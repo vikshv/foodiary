@@ -1,0 +1,13 @@
+<div class="foodiary__page foodiary__page--food">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h3>Food</h3>
+            </div>
+        </div>
+    </div>
+    <ui-view>
+        <food-toolbar checked="$ctrl.checked" handlers="$ctrl.toolbarHandlers"></food-toolbar>
+        <food-table list="$ctrl.list" loading="$ctrl.loading" handlers="$ctrl.tableHandlers"></food-table>
+    </ui-view>
+</div>

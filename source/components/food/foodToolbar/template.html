@@ -1,0 +1,19 @@
+<div class="food__toolbar">
+    <div class="row">
+        <div class="col-md-8">
+            <a ui-sref="food.new" class="btn btn-success" ng-if="!$ctrl.checked">Add</a>
+            <button type="button" class="btn btn-danger" ng-click="$ctrl.onClickDelete()" ng-if="$ctrl.checked">Delete</button>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Name">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- <food-delete-confirm-dialog></food-delete-confirm-dialog> -->
+</div>

@@ -1,0 +1,87 @@
+<div class="food__form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="well">
+                <form name="foodItem" class="form-horizontal" ng-submit="$ctrl.submit()" novalidate>
+                    <fieldset>
+                        <legend>
+                            <span ng-if="!$ctrl.foodId">Add new food</span>
+                            <span ng-if="$ctrl.foodId">Edit food</span>
+                        </legend>
+
+                        <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('shortName') }">
+                            <label for="inputShortName" class="col-md-3 control-label">Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="inputShortName" name="shortName" maxlength="40" placeholder="short name" required ng-model="$ctrl.item.shortName">
+                                <div ng-messages="foodItem.shortName.$error" ng-if="$ctrl.isHasError('shortName')" role="alert">
+                                    <div ng-message="required" class="form__message--error">Enter short name</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('protein') }">
+                            <label for="inputProtein" class="col-md-3 control-label">Protein</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon addon--widthFixed">g</span>
+                                    <input type="text" float-value class="form-control" id="inputProtein" name="protein" required ng-model="$ctrl.item.protein" placeholder="in 100 g">
+                                </div>
+                                <div ng-messages="foodItem.protein.$error" ng-if="$ctrl.isHasError('protein')" role="alert">
+                                    <div ng-message="required" class="form__message--error">Enter protein</div>
+                                    <div ng-message="required" class="form__message--error">More than 100 g</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('fat') }">
+                            <label for="inputFat" class="col-md-3 control-label">Fat</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon addon--widthFixed">g</span>
+                                    <input type="text" float-value class="form-control" id="inputFat" name="fat" required ng-model="$ctrl.item.fat" placeholder="in 100 g">
+                                </div>
+                                <div ng-messages="foodItem.fat.$error" ng-if="$ctrl.isHasError('fat')" role="alert">
+                                    <div ng-message="required" class="form__message--error">Enter fat</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('carbohydrate') }">
+                            <label for="inputСarbohydrate" class="col-md-3 control-label">Сarbohydrate</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon addon--widthFixed">g</span>
+                                    <input type="text" float-value class="form-control" id="inputСarbohydrate" name="carbohydrate" required ng-model="$ctrl.item.carbohydrate" placeholder="in 100 g">
+                                </div>
+                                <div ng-messages="foodItem.carbohydrate.$error" ng-if="$ctrl.isHasError('carbohydrate')" role="alert">
+                                    <div ng-message="required" class="form__message--error">Enter carbohydrate</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputCalorie" class="col-md-3 control-label">Energy</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon addon--widthFixed">kcal</span>
+                                    <input type="text" float-value class="form-control" id="inputCalorie" ng-model="$ctrl.item.energy" placeholder="per 100 g">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" ng-click="$ctrl.item.energy = $ctrl.calcEnergy()">Calc</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-9 col-md-offset-3">
+                                <button type="submit" class="btn btn-primary" ng-disabled="foodItem.$invalid">Save</button>
+                                <a ui-sref="food" class="btn btn-link">Cancel</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            
+            </div>
+        </div>
+    </div>
+</div>
