@@ -1,0 +1,12 @@
+<table class="calendar__year">
+    <tbody>
+        <tr class="calendar__quarter" ng-repeat="quarter in [0, 3, 6, 9]">
+            <td class="quarter__month" 
+                ng-repeat="month in [0, 1, 2]"
+                ng-class="{ active: $ctrl.isCurrent(quarter + month) }" 
+                ng-click="$ctrl.onClickMonth(quarter + month)">
+                <span>{{ $ctrl.months[quarter + month] }}</span>
+            </td>
+        </tr>
+    </tbody>
+</table>

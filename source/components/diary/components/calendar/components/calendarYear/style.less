@@ -1,0 +1,30 @@
+.calendar {
+    .calendar__year {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .calendar__quarter {
+
+    }
+
+    .quarter__month {
+        min-height: 60px;
+        border: 1px solid #464545;
+        background-color: #303030;
+        line-height: 60px;
+        text-align: center;
+        margin-bottom: -1px;
+        margin-right: -1px;
+        cursor: pointer;
+        color: #00bc8c;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        &.active {
+            background-color: #464545;
+        }
+    }
+}

@@ -16,11 +16,15 @@ app.config(($stateProvider, $urlRouterProvider) => {
         .state('home', {
             url: '/home',
             template: '<home><home>'
-        })
+        });
+
+    $stateProvider
         .state('diary', {
             url: '/diary',
             template: '<diary></diary>'
-        })
+        });
+
+    $stateProvider
         .state('food', {
             url: '/food',
             template: '<food></food>'
@@ -36,7 +40,9 @@ app.config(($stateProvider, $urlRouterProvider) => {
                 this.foodId = $stateParams.foodId;
             },
             controllerAs: '$ctrl'
-        })
+        });
+
+    $stateProvider
         .state('about', {
             url: '/about',
             template: '<about></about>'

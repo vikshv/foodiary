@@ -1,0 +1,27 @@
+<div class="calendar__toolbar">
+    <div class="toolbar__left">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="$ctrl.onClickLeft()"><i class="fa fa-chevron-left"></i></button>
+                <button type="button" class="btn btn-default" ng-click="$ctrl.onClickRight()"><i class="fa fa-chevron-right"></i></button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="$ctrl.onClickToday()">Сегодня</button>
+            </div>
+        </div>
+    </div>
+    <div class="toolbar__right">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-class="{ active: $ctrl.isYear() }" ng-click="$ctrl.onClickYear()">Год</button>
+                <button type="button" class="btn btn-default" ng-class="{ active: $ctrl.isMonth() }" ng-click="$ctrl.onClickMonth()">Месяц</button>
+                <button type="button" class="btn btn-default" ng-class="{ active: $ctrl.isWeek() }" ng-click="$ctrl.onClickWeek()">Неделя</button>
+                <button type="button" class="btn btn-default" ng-class="{ active: $ctrl.isDay() }" ng-click="$ctrl.onClickDay()">День</button>
+            </div>
+        </div>
+    </div>
+    <div class="toolbar__center">
+        <span>{{ $ctrl.getMonthName() }} {{ $ctrl.getYear() }}</span>
+    </div>
+    <div class="toolbar__clear"></div>
+</div>

@@ -23,7 +23,7 @@
                             <label for="inputProtein" class="col-md-3 control-label">Protein</label>
                             <div class="col-md-7">
                                 <div class="input-group">
-                                    <span class="input-group-addon addon--widthFixed">g</span>
+                                    <span class="input-group-addon">g</span>
                                     <input type="text" float-value class="form-control" id="inputProtein" name="protein" required ng-model="$ctrl.item.protein" placeholder="in 100 g">
                                 </div>
                                 <div ng-messages="foodItem.protein.$error" ng-if="$ctrl.isHasError('protein')" role="alert">
@@ -37,7 +37,7 @@
                             <label for="inputFat" class="col-md-3 control-label">Fat</label>
                             <div class="col-md-7">
                                 <div class="input-group">
-                                    <span class="input-group-addon addon--widthFixed">g</span>
+                                    <span class="input-group-addon">g</span>
                                     <input type="text" float-value class="form-control" id="inputFat" name="fat" required ng-model="$ctrl.item.fat" placeholder="in 100 g">
                                 </div>
                                 <div ng-messages="foodItem.fat.$error" ng-if="$ctrl.isHasError('fat')" role="alert">
@@ -50,7 +50,7 @@
                             <label for="inputСarbohydrate" class="col-md-3 control-label">Сarbohydrate</label>
                             <div class="col-md-7">
                                 <div class="input-group">
-                                    <span class="input-group-addon addon--widthFixed">g</span>
+                                    <span class="input-group-addon">g</span>
                                     <input type="text" float-value class="form-control" id="inputСarbohydrate" name="carbohydrate" required ng-model="$ctrl.item.carbohydrate" placeholder="in 100 g">
                                 </div>
                                 <div ng-messages="foodItem.carbohydrate.$error" ng-if="$ctrl.isHasError('carbohydrate')" role="alert">
@@ -63,7 +63,7 @@
                             <label for="inputCalorie" class="col-md-3 control-label">Energy</label>
                             <div class="col-md-7">
                                 <div class="input-group">
-                                    <span class="input-group-addon addon--widthFixed">kcal</span>
+                                    <span class="input-group-addon">kcal</span>
                                     <input type="text" float-value class="form-control" id="inputCalorie" ng-model="$ctrl.item.energy" placeholder="per 100 g">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="button" ng-click="$ctrl.item.energy = $ctrl.calcEnergy()">Calc</button>

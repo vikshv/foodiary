@@ -5,14 +5,17 @@ var webpack = require ('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    context: path.join(__dirname, '/source'),
+    context: path.join(__dirname, '/'),
 
-    entry: './index.js',
+    entry: {
+        foodiary: './source/index.js',
+        tests: './tests/index.js'
+    },
 
     output: {
         path: path.join(__dirname, 'public'),
         publicPath: '/public/',
-        filename: 'foodiary.js'
+        filename: '[name].js'
     },
     
     watchOptions: {
