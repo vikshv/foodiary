@@ -1,7 +1,8 @@
-import app from '../../app';
-import FoodService from '../../services/FoodService';
-import './foodToolbar';
-import './foodTable';
+import app from './app';
+import './foodConfig';
+import './components/foodToolbar';
+import './components/foodTable';
+import './components/foodItem';
 import template from './template.html';
 import './style.less';
 

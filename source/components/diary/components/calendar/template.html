@@ -1,9 +1,0 @@
-<div class="calendar">
-    <calendar-toolbar date="$ctrl.date" period="$ctrl.period"></calendar-toolbar>
-    <div class="calendar__body">
-        <calendar-year date="$ctrl.date" handlers="$ctrl.yearHandlers" ng-if="$ctrl.isYear()"></calendar-year>
-        <calendar-month date="$ctrl.date" handlers="$ctrl.monthHandlers" ng-if="$ctrl.isMonth()"></calendar-month>
-        <calendar-week date="$ctrl.date" ng-if="$ctrl.isWeek()"></calendar-week>
-        <calendar-day date="$ctrl.date" ng-if="$ctrl.isDay()"></calendar-day>
-    </div>    
-</div>

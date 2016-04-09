@@ -1,0 +1,57 @@
+.calendar {
+    .calendar__week {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .header__week,
+    .week__number {
+        width: 40px;
+    }
+
+    .header__week,
+    .header__day,
+    .week__number,
+    .week__day {
+        border: 1px solid #464545;
+        background-color: #303030;
+        text-align: center;
+    }
+
+    .header__day--sat,
+    .header__day--sun {
+        color: #e74c3c;
+    }
+
+    .week__day {
+        height: 100px;
+        line-height: 100px;
+        margin-bottom: -1px;
+        margin-right: -1px;
+        cursor: pointer;
+
+        .day__number {
+            color: #00bc8c;
+        }
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        &--otherMonth {
+            .day__number {
+                opacity: 0.3;
+            }
+        }
+
+        &--weekend {
+            .day__number {
+                color: #e74c3c;
+            }
+        }
+
+        &--currentDay {
+            background-color: #464545;
+        }
+    }
+}

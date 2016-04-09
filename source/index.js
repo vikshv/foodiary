@@ -1,27 +1,14 @@
+import app from './app';
+import './directives/floatValue';
 import './style.less';
 
-import app from './app';
-import './components/navbar';
-import './components/footer';
-import './components/home';
-import './components/diary';
-import './components/food';
-import './components/food/foodItem';
-import './components/about';
-
-app.config(($stateProvider, $urlRouterProvider) => {
+app.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
         .state('home', {
             url: '/home',
             template: '<home><home>'
-        });
-
-    $stateProvider
-        .state('diary', {
-            url: '/diary',
-            template: '<diary></diary>'
         });
 
     $stateProvider

@@ -1,6 +1,6 @@
 import app from '../../app';
 
-export default app.directive('floatValue', function($filter) {
+app.directive('floatValue', function($filter) {
     return {
         restrict: 'A',
 

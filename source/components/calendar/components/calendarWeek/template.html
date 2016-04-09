@@ -1,0 +1,25 @@
+<table class="calendar__week">
+    <thead class="week__header">
+        <tr>
+            <th class="header__week"><span>Нед</span></th>
+            <th class="header__day header__day--mon">Пн</th>
+            <th class="header__day header__day--tue">Вт</th>
+            <th class="header__day header__day--wed">Ср</th>
+            <th class="header__day header__day--thu">Чт</th>
+            <th class="header__day header__day--fri">Пт</th>
+            <th class="header__day header__day--sat">Сб</th>
+            <th class="header__day header__day--sun">Вс</th>
+        </tr>
+    </thead>
+    <tbody class="week__body">
+        <tr class="calendar__week">
+            <td class="week__number">{{ $ctrl.getWeekNumber() }}</td>
+            <td class="week__day" 
+                ng-repeat="n in [0, 1, 2, 3, 4, 5, 6]"
+                ng-class="[$ctrl.getWeekendClassName(n), $ctrl.getCurrentDayClassName(n)]"
+                ng-click="$ctrl.onClickDay(n)">
+                <span class="day__number">{{ $ctrl.getDay(n) }}</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
