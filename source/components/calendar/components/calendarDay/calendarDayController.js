@@ -1,10 +1,11 @@
-let moment;
-let DateService;
+import productAddDialogTemplate from './productAddDialog/template.html';
+import productAddDialogController from './productAddDialog/productAddDialogController.js';
 
 export default class CalendarDayController {
-    constructor(_DateService_) {
-        DateService = _DateService_;
-        moment = DateService.getMoment();
+    constructor(DateService, $uibModal) {
+        this.DateService = DateService;
+        this.$uibModal = $uibModal;
+        this.moment = DateService.getMoment();
 
         this.allChecked = false;
 
@@ -13,5 +14,14 @@ export default class CalendarDayController {
 
     isEmpty() {
         return !this.items.length;
+    }
+
+    onClickAdd() {
+        this.$uibModal.open({
+            animation: true,
+            template: productAddDialogTemplate,
+            controller: productAddDialogController,
+            controllerAs: '$ctrl'
+        });
     }
 };

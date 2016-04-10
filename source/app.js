@@ -3,6 +3,7 @@ import uiRouter from 'angular-ui-router';
 import ngMessages from 'angular-messages';
 import firebase from 'firebase';
 import angularfire from 'angularfire';
+import uiBootstrap from 'angular-ui-bootstrap';
 
 import './components/navbar';
 import './components/footer';
@@ -15,6 +16,7 @@ import './components/food';
 export default angular.module('app', [
     uiRouter,
     ngMessages,
+    uiBootstrap,
     'firebase',
     'navbar',
     'footer',

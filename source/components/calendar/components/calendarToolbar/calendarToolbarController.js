@@ -66,16 +66,12 @@ export default class CalendarToolbarController {
         return this.period === value;
     }
 
-    _getPeriodKey() {
-        return this.peiodKeys[this.period];
-    }
-
-    onClickLeft() {
-        this.date = moment(this.date, 'DD.MM.YYYY').subtract(1, this._getPeriodKey());
+    onClickLeft() {        
+        this.handlers.onClickLeft();
     }
 
     onClickRight() {
-        this.date = moment(this.date, 'DD.MM.YYYY').add(1, this._getPeriodKey());
+        this.handlers.onClickRight();
     }
 
     onClickToday() {

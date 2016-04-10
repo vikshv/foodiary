@@ -5,7 +5,16 @@ export default class CalendarController {
     constructor(DateService, DatePeriodService) {
         moment = DateService.getMoment();
 
+        this.dateFormat = DateService.getFormat();
+
         this.periodValues = DatePeriodService.getPeriodValues();
+
+        this.peiodKeys = {
+            [this.periodValues.year]: 'y',
+            [this.periodValues.month]: 'M',
+            [this.periodValues.week]: 'w',
+            [this.periodValues.day]: 'd'
+        };
 
         this._initDate(this.date);
         this._initToolbarHandlers();
@@ -14,8 +23,12 @@ export default class CalendarController {
         this._initWeekHandlers();
     }
 
+    _getPeriodKey() {
+        return this.peiodKeys[this.period];
+    }
+
     _initDate(value) {
-        this.date = moment(this.date, 'DD.MM.YYYY');
+        this.date = moment(this.date, this.dateFormat);
     }
 
     _initToolbarHandlers() {
@@ -25,7 +38,15 @@ export default class CalendarController {
             onClickWeek: this.handlers.goWeek,
             onClickDay: this.handlers.goDay,
             onClickToday: () => {
-                const date = moment().format('DD.MM.YYYY');
+                const date = moment().format(this.dateFormat);
+                this.handlers.goDate(date);
+            },
+            onClickLeft: () => {
+                const date = moment(this.date, this.dateFormat).subtract(1, this._getPeriodKey()).format(this.dateFormat);
+                this.handlers.goDate(date);
+            },
+            onClickRight: () => {
+                const date = moment(this.date, this.dateFormat).add(1, this._getPeriodKey()).format(this.dateFormat);
                 this.handlers.goDate(date);
             }
         };
@@ -34,7 +55,7 @@ export default class CalendarController {
     _initYearHandlers() {
         this.yearHandlers = {
             onClickMonth: month => {
-                const formatDate = moment().month(month).startOf('month').format('DD.MM.YYYY');;
+                const formatDate = moment().month(month).startOf('month').format(this.dateFormat);;
                 this.handlers.goMonth(formatDate);
             }
         };
@@ -46,7 +67,7 @@ export default class CalendarController {
                 this._onClickDay(date);
             },
             onClickWeek: date => {
-                const formatDate = moment(date).startOf('week').format('DD.MM.YYYY');
+                const formatDate = moment(date).startOf('week').format(this.dateFormat);
                 this.handlers.goWeek(formatDate);
             }
         };
@@ -61,7 +82,7 @@ export default class CalendarController {
     }
 
     _onClickDay(date) {
-        const formatDate = moment(date).format('DD.MM.YYYY');
+        const formatDate = moment(date).format(this.dateFormat);
         this.handlers.goDay(formatDate);
     }
 

@@ -2,6 +2,7 @@ import moment from 'moment';
 
 export default class DateServiceController {
     constructor() {
+        this.format = 'DD.MM.YYYY';
     }
 
     initialize(options) {
@@ -11,6 +12,14 @@ export default class DateServiceController {
 
     getMoment() {
         return moment;
+    }
+
+    getFormat() {
+        return this.format;
+    }
+
+    getNowDateFormatted() {
+        return moment().format(this.format);
     }
 
     isCurrentMonth(date) {
@@ -28,10 +37,10 @@ export default class DateServiceController {
     }
 
     getYearName(date) {
-        return moment(date, 'DD.MM.YYYY').format('YYYY');
+        return moment(date, this.format).format('YYYY');
     }
 
     getDateName(date) {
-        return moment(date, 'DD.MM.YYYY').format('D MMMM YYYY');
+        return moment(date, this.format).format('D MMMM YYYY');
     }
 }
