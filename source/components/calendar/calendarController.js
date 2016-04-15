@@ -21,6 +21,7 @@ export default class CalendarController {
         this._initYearHandlers();
         this._initMonthHandlers();
         this._initWeekHandlers();
+        this._initDayHandlers();
     }
 
     _getPeriodKey() {
@@ -78,6 +79,13 @@ export default class CalendarController {
             onClickDay: date => {
                 this._onClickDay(date);
             }
+        };
+    }
+
+    _initDayHandlers() {
+        this.dayHandlers = {
+            getData: this.handlers.getData,
+            setData: this.handlers.setData
         };
     }
 

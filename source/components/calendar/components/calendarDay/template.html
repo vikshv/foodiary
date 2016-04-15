@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-if="$ctrl.isEmpty()">
+                    <tr ng-if="$ctrl.isEmpty() && !$ctrl.loading">
                         <td colspan="8" class="table__emptyRow">
                             Добавьте
                             <a class="link link--local" ng-click="$ctrl.onClickAdd()">продукт</a>,
@@ -26,7 +26,7 @@
                     <tr ng-repeat="item in $ctrl.items">
                         <td>{{ item.time }}</td>
                         <td>
-                            <a ui-sref="food.edit({ foodId: item.$id })">{{ item.shortName }}</a>
+                            <a>{{ item.shortName }}</a>
                         </td>
                         <td>{{ item.weight }}</td>
                         <td>{{ item.energy }}</td>
@@ -34,6 +34,22 @@
                         <td>{{ item.protein }}</td>
                         <td>{{ item.fat }}</td>
                         <td>{{ $ctrl.getRatio(item) }}</td>
+                    </tr>
+                    <tr class="table__sumRow" ng-if="$ctrl.items.length > 1">
+                        <td colspan="2" class="sumRow__title">
+                            <i>Итого:</i>
+                        </td>
+                        <td>{{ $ctrl.total.weight }}</td>
+                        <td>{{ $ctrl.total.energy }}</td>
+                        <td>{{ $ctrl.total.carbohydrate }}</td>
+                        <td>{{ $ctrl.total.protein }}</td>
+                        <td>{{ $ctrl.total.fat }}</td>
+                        <td>{{ $ctrl.total.ratio }}</td>
+                    </tr>
+                    <tr ng-if="$ctrl.loading">
+                        <td colspan="8" class="table__loadingRow">
+                            <i class="fa fa-3x fa-spinner fa-spin"></i>
+                        </td>
                     </tr>
                 </tbody>
             </table>

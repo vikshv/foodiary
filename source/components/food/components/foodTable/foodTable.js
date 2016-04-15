@@ -5,12 +5,10 @@ import './style.less';
 
 export default app.component('foodTable', {
     template,
-
+    controller,
     bindings: {
         list: '<',
         loading: '<',
         handlers: '<'
-    },
-
-    controller: [controller]
+    }
 });

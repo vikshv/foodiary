@@ -1,14 +1,12 @@
 export default class FoodTableController {
-    constructor() {
+    constructor(FoodRatioService) {
+        this.FoodRatioService = FoodRatioService;
         this.allChecked = false;
     }
 
     getRatio(item) {
-        const protein = parseFloat(item.protein);
-        const fat = parseFloat(item.fat);
-        const carbohydrate = parseFloat(item.carbohydrate);
-        const sum = protein + fat + carbohydrate;
-        return `${this._getRatioValue(carbohydrate, sum)}/${this._getRatioValue(protein, sum)}/${this._getRatioValue(fat, sum)}`;
+        const { carbohydrate, protein, fat } = item;
+        return this.FoodRatioService.getRatio(carbohydrate, protein, fat);
     }
 
     onChangeAllSelectCheckbox() {
@@ -32,11 +30,6 @@ export default class FoodTableController {
         } else {
             this.allChecked = false;
         }
-    }
-
-    _getRatioValue(value, sum) {
-        const n = value / sum;
-        return n.toFixed(2);
     }
 
     isEmpty() {

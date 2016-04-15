@@ -1,8 +1,26 @@
 .calendar {
     .calendar__day {
-        .table__emptyRow {
-            line-height: 120px;
+        .table__emptyRow,
+        .table__loadingRow {
+            line-height: 140px;
             text-align: center;
+        }
+
+        .table__loadingRow {
+            color: #00bc8c;
+
+            &:hover {
+                background-color: #3d3d3d;
+            }
+        }
+
+        .table__sumRow {
+            color: #00bc8c;
+            
+            .sumRow__title {
+                text-align: right;
+                padding-right: 20px;
+            }
         }
 
         .link {

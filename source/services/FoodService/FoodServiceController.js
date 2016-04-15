@@ -1,27 +1,41 @@
 export default class FoodServiceController {
     /* @ngInject */
-    constructor($firebaseArray, UrlsService) {
-        const url = UrlsService.getFoodsUrl();
-        this.list = $firebaseArray(new Firebase(url));
+    constructor($firebaseArray, UrlsService, AuthService) {
+        this.$firebaseArray = $firebaseArray;
+        this.UrlsService = UrlsService;
+        this.AuthService = AuthService;
     }
 
     getList() {
-        return this.list.$loaded();
+        return this._getList().$loaded();
     }
 
     getItem(id) {
-        return this.list.$getRecord(id);
+        return this._getList().$getRecord(id);
     }
 
     addItem(data) {
-        return this.list.$add(data);
+        return this._getList().$add(data);
     }
 
     removeItem(item) {
-        return this.list.$remove(item);
+        return this._getList().$remove(item);
     }
 
     editItem(item) {
-        return this.list.$save(item);
+        return this._getList().$save(item);
+    }
+
+    _getList() {
+        if (!this.list) {
+            this.list = this._createList();
+        }
+        return this.list;
+    }
+
+    _createList() {
+        const auth = this.AuthService.getAuth();
+        const url = this.UrlsService.getFoodsUrl(auth.uid);
+        return this.$firebaseArray(new Firebase(url));
     }
 }

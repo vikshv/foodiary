@@ -1,5 +1,4 @@
 import app from '../../app';
+import controller from './UrlsServiceController';
 
-export default app.service('UrlsService', function() {
-    this.getFoodsUrl = () => 'https://foodiary.firebaseio.com/food';
-});
+app.service('UrlsService', controller);

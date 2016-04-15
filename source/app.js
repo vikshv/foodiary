@@ -7,11 +7,12 @@ import uiBootstrap from 'angular-ui-bootstrap';
 
 import './components/navbar';
 import './components/footer';
-import './components/home';
+import home from './components/home';
 import './components/calendar';
 import './components/diary';
 import './components/about';
 import './components/food';
+import promo from './components/promo';
 
 export default angular.module('app', [
     uiRouter,
@@ -20,9 +21,10 @@ export default angular.module('app', [
     'firebase',
     'navbar',
     'footer',
-    'home',
+    home,
     'about',
     'food',
     'calendar',
-    'diary'
+    'diary',
+    promo
 ]);

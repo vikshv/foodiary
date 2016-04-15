@@ -5,80 +5,31 @@
     <form name="foodItem" class="form-horizontal" ng-submit="$ctrl.submit()" novalidate>
         <fieldset>
             <div class="form-group">
-                <label for="inputTime" class="col-md-3 control-label">Время</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" id="inputTime" name="time">
-                </div>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('shortName') }">
                 <label for="inputShortName" class="col-md-3 control-label">Наименование</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" id="inputShortName" name="shortName" maxlength="40" required ng-model="$ctrl.item.shortName">
-                    <div ng-messages="foodItem.shortName.$error" ng-if="$ctrl.isHasError('shortName')" role="alert">
-                        <div ng-message="required" class="form__message--error">Введите наименование</div>
-                    </div>
+                <div class="col-md-8">
+                    <input type="text" 
+                        class="form-control" 
+                        id="inputShortName" 
+                        name="shortName" 
+                        maxlength="40" 
+                        autocomplete="off"
+                        uib-typeahead="item as item.shortName for item in $ctrl.getItems($viewValue)" typeahead-show-hint="true" typeahead-on-select="$ctrl.onSelected()"
+                        required 
+                        ng-model="$ctrl.selectedItem">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="inputWeight" class="col-md-3 control-label">Вес</label>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-addon">г</span>
-                        <input type="text" class="form-control" id="inputWeight" name="weight" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('carbohydrate') }">
-                <label for="inputСarbohydrate" class="col-md-3 control-label">Углеводы</label>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-addon">г</span>
-                        <input type="text" float-value class="form-control" id="inputСarbohydrate" name="carbohydrate" required ng-model="$ctrl.item.carbohydrate">
-                    </div>
-                    <div ng-messages="foodItem.carbohydrate.$error" ng-if="$ctrl.isHasError('carbohydrate')" role="alert">
-                        <div ng-message="required" class="form__message--error">Enter carbohydrate</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('protein') }">
-                <label for="inputProtein" class="col-md-3 control-label">Белки</label>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-addon">г</span>
-                        <input type="text" float-value class="form-control" id="inputProtein" name="protein" required ng-model="$ctrl.item.protein">
-                    </div>
-                    <div ng-messages="foodItem.protein.$error" ng-if="$ctrl.isHasError('protein')" role="alert">
-                        <div ng-message="required" class="form__message--error">Enter protein</div>
-                        <div ng-message="required" class="form__message--error">More than 100 g</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('fat') }">
-                <label for="inputFat" class="col-md-3 control-label">Жиры</label>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-addon">г</span>
-                        <input type="text" float-value class="form-control" id="inputFat" name="fat" 
-                            required ng-model="$ctrl.item.fat">
-                    </div>
-                    <div ng-messages="foodItem.fat.$error" ng-if="$ctrl.isHasError('fat')" role="alert">
-                        <div ng-message="required" class="form__message--error">Enter fat</div>
-                    </div>
+                <label for="inputWeight" class="col-md-3 control-label">Вес, г</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="inputWeight" name="weight" ng-model="$ctrl.weight" autocomplete="off" required>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="inputCalorie" class="col-md-3 control-label">Калорийность</label>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-addon">ккал</span>
-                        <input type="text" float-value class="form-control" id="inputCalorie" ng-model="$ctrl.item.energy">
-                    </div>
+                <label for="inputTime" class="col-md-3 control-label">Время</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="inputTime" ng-model="$ctrl.time" name="time">
                 </div>
             </div>
         </fieldset>

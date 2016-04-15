@@ -17,7 +17,7 @@
         <tbody>
             <tr ng-if="$ctrl.isEmpty()">
                 <td colspan="9" class="table__emptyRow">
-                    <a ui-sref="food.new" class="btn btn-link">Add food</a>
+                    <a ui-sref="food.new" class="btn btn-link">Добавить</a>
                 </td>
             </tr>
             <tr ng-repeat="item in $ctrl.list" ng-if="!$ctrl.loading" ng-class="{ warning: item.checked }">

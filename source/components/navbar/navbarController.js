@@ -1,9 +1,30 @@
 export default class NavbarController {
-    constructor($scope, $state) {
+    constructor($scope, $state, AuthService) {
         this.$scope = $scope;
         this.$state = $state;
+        this.AuthService = AuthService;
+        
         this._initState();
+        this._initAuth();
         this._bindEvents();
+    }
+
+    goMainPage() {
+        let state;
+        if (this.auth) {
+            state = 'home';
+        } else {
+            state = 'promo';
+        }
+        this.$state.go(state);
+    }
+
+    logout() {
+        this.AuthService.logout();
+    }
+
+    _initAuth() {
+        this.auth = this.AuthService.getAuth();
     }
 
     _initState() {
@@ -22,6 +43,10 @@ export default class NavbarController {
     _bindEvents() {
         this.$scope.$on('$stateChangeSuccess', () => {
             this._initState();
+        });
+
+        this.AuthService.onAuth(() => {
+            this._initAuth();
         });
     }
 }

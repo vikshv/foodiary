@@ -1,10 +1,8 @@
-let $state;
-let DateService;
-
 export default class DiaryController {
-    constructor(_$state_, _DateService_) {
-        $state = _$state_;
-        DateService = _DateService_;
+    constructor($state, DateService, DiaryService) {
+        this.$state = $state;
+        this.DateService = DateService;
+        this.DiaryService = DiaryService;
 
         this._initState();
         this._initCalendarHandlers();
@@ -13,15 +11,15 @@ export default class DiaryController {
     _initState() {
         if (!this.date || !this.period) {
             const period = this.period || 'day';
-            const date = this.date || DateService.getNowDateFormatted();
+            const date = this.date || this.DateService.getNowDateFormatted();
             this._goState({ date, period });
         }
     }
 
     _goState(options) {
-        const { params } = $state;
+        const { params } = this.$state;
         const { period = params.period, date = params.date } = options;
-        $state.go('diary', {
+        this.$state.go('diary', {
             date,
             period
         });
@@ -33,7 +31,34 @@ export default class DiaryController {
             goMonth: date => this._goState({ period: 'month', date }),
             goWeek: date => this._goState({ period: 'week', date }),
             goDay: date => this._goState({ period: 'day', date }),
-            goDate: date => this._goState({ date })
+            goDate: date => this._goState({ date }),
+            getData: date => this._getData(date),
+            setData: (data, date) => this._setData(data, date)
+        };
+    }
+
+    _getData(date) {
+        const options = this._getDateParams(date);
+        return this.DiaryService.getList(options);
+    }
+
+    _setData(data, date) {
+        const options = this._getDateParams(date);
+        return this.DiaryService.addItem(data, options);
+    }
+
+    _getDateParams(date) {
+        const format = this.DateService.getFormat();
+        const moment = this.DateService.getMoment();
+        const momentDate = moment(date, format);
+        const year = momentDate.year();
+        const month = momentDate.month();
+        const day = momentDate.date();
+
+        return {
+            year,
+            month,
+            day
         };
     }
 }

@@ -1,10 +1,10 @@
 import app from './app';
-import './homeConfig';
-import controller from './homeController';
+import './promoConfig';
+import controller from './PromoController';
 import template from './template.html';
 import './style.less';
 
-const componentName = 'home';
+const componentName = 'promo';
 
 app.component(componentName, {
     template,

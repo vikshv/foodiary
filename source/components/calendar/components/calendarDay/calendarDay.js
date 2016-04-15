@@ -7,5 +7,7 @@ export default app.component('calendarDay', {
     template,
     controller,
     bindings: {
+        date: '<',
+        handlers: '<'
     }
 });
