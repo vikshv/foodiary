@@ -32,8 +32,11 @@ export default class DiaryController {
             goWeek: date => this._goState({ period: 'week', date }),
             goDay: date => this._goState({ period: 'day', date }),
             goDate: date => this._goState({ date }),
+
             getData: date => this._getData(date),
-            setData: (data, date) => this._setData(data, date)
+            addData: (data, date) => this._addData(data, date),
+            editData: (data, date) => this._editData(data, date),
+            removeData: (data, date) => this._removeData(data, date)
         };
     }
 
@@ -42,9 +45,19 @@ export default class DiaryController {
         return this.DiaryService.getList(options);
     }
 
-    _setData(data, date) {
+    _addData(data, date) {
         const options = this._getDateParams(date);
         return this.DiaryService.addItem(data, options);
+    }
+
+    _editData(data, date) {
+        const options = this._getDateParams(date);
+        return this.DiaryService.editItem(data, options);
+    }
+
+    _removeData(data, date) {
+        const options = this._getDateParams(date);
+        return this.DiaryService.removeItem(data, options);
     }
 
     _getDateParams(date) {

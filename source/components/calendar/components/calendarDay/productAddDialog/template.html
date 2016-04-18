@@ -13,7 +13,10 @@
                         name="shortName" 
                         maxlength="40" 
                         autocomplete="off"
-                        uib-typeahead="item as item.shortName for item in $ctrl.getItems($viewValue)" typeahead-show-hint="true" typeahead-on-select="$ctrl.onSelected()"
+                        uib-typeahead="item as item.shortName for item in $ctrl.getItems($viewValue)"
+                        typeahead-show-hint="true"
+                        typeahead-on-select="$ctrl.onSelected()"
+                        typeahead-editable="false"
                         required 
                         ng-model="$ctrl.selectedItem">
                 </div>
@@ -37,5 +40,5 @@
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="$ctrl.onClickCansel()">Отмена</button>
-    <button type="button" class="btn btn-primary" ng-click="$ctrl.onClickOk()">Добавить</button>
+    <button type="button" class="btn btn-primary" ng-click="$ctrl.onClickOk()">Сохранить</button>
 </div>

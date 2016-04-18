@@ -41,16 +41,38 @@ export default class CalendarDayController {
         return !this.items.length;
     }
 
-    onClickAdd() {
+    addItem() {
+        this._showItemDialog().then(data => {
+            const k = data.weight / 100;
+            const item = this._getItemData(data, k);
+            this.handlers.addData(item, this.date);
+        });
+    }
+
+    editItem(item) {
+        const oldWeight = item.weight;
+        this._showItemDialog(item)
+            .then(data => {
+                const k = data.weight / oldWeight;
+                const item = this._getItemData(data, k);
+                this.handlers.editData(item, this.date);
+            });
+    }
+
+    _showItemDialog(data) {
         const modal = this.$uibModal.open({
             animation: true,
             template: productAddDialogTemplate,
-            controller: productAddDialogController,
+            controller: function($uibModalInstance, FoodService) {
+                return new productAddDialogController($uibModalInstance, FoodService, data);
+            },
             controllerAs: '$ctrl'
         });
-        modal.result.then(data => {
-            this._addItem(data);
-        });
+        return modal.result;
+    }
+
+    removeItem(item) {
+        this.handlers.removeData(item, this.date);
     }
 
     getRatio(item) {
@@ -65,22 +87,14 @@ export default class CalendarDayController {
         return result.toFixed(0);
     }
 
-    _addItem(data) {
-        const { shortName, protein, fat, energy, carbohydrate, weight, time } = data;
-        const k = weight / 100;
-        const item = {
-            shortName,
+    _getItemData(data, k) {
+        const { protein, fat, energy, carbohydrate } = data;
+        return Object.assign(data, {
             protein: this._scaleValue(protein, k),
             fat: this._scaleValue(fat, k),
             energy: this._scaleValue(energy, k),
-            carbohydrate: this._scaleValue(carbohydrate, k),
-            weight,
-            time
-        };
-        this.handlers.setData(item, this.date)
-            .then(result => {
-                debugger;
-            });
+            carbohydrate: this._scaleValue(carbohydrate, k)
+        });
     }
 
     _scaleValue(value, k) {

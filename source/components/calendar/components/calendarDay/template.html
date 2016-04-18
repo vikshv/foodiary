@@ -18,9 +18,9 @@
                     <tr ng-if="$ctrl.isEmpty() && !$ctrl.loading">
                         <td colspan="8" class="table__emptyRow">
                             Добавьте
-                            <a class="link link--local" ng-click="$ctrl.onClickAdd()">продукт</a>,
-                            <a class="link link--local" ng-click="$ctrl.onClickAdd()">блюдо</a>,
-                            <a class="link link--local" ng-click="$ctrl.onClickAdd()">трапезу</a>
+                            <a class="link link--local" ng-click="$ctrl.addItem()">продукт</a>,
+                            <a class="link link--local" ng-click="$ctrl.addItem()">блюдо</a>,
+                            <a class="link link--local" ng-click="$ctrl.addItem()">трапезу</a>
                         </td>
                     </tr>
                     <tr ng-repeat="item in $ctrl.items">
@@ -34,6 +34,12 @@
                         <td>{{ item.protein }}</td>
                         <td>{{ item.fat }}</td>
                         <td>{{ $ctrl.getRatio(item) }}</td>
+                        <td>
+                            <div class="table__toolbar">
+                                <span class="toolbar__item text-success" ng-click="$ctrl.editItem(item)"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                <span class="toolbar__item text-danger" ng-click="$ctrl.removeItem(item)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                            </div>
+                        </td>
                     </tr>
                     <tr class="table__sumRow" ng-if="$ctrl.items.length > 1">
                         <td colspan="2" class="sumRow__title">
@@ -45,6 +51,7 @@
                         <td>{{ $ctrl.total.protein }}</td>
                         <td>{{ $ctrl.total.fat }}</td>
                         <td>{{ $ctrl.total.ratio }}</td>
+                        <td></td>
                     </tr>
                     <tr ng-if="$ctrl.loading">
                         <td colspan="8" class="table__loadingRow">
@@ -61,7 +68,7 @@
             <div class="pull-right">
                 <div class="btn-toolbar">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-success" ng-click="$ctrl.onClickAdd()">
+                        <button type="button" class="btn btn-success" ng-click="$ctrl.addItem()">
                             Добавить
                         </button>
                     </div>

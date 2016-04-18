@@ -85,7 +85,9 @@ export default class CalendarController {
     _initDayHandlers() {
         this.dayHandlers = {
             getData: this.handlers.getData,
-            setData: this.handlers.setData
+            addData: this.handlers.addData,
+            editData: this.handlers.editData,
+            removeData: this.handlers.removeData
         };
     }
 

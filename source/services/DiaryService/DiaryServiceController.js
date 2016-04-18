@@ -18,13 +18,39 @@ export default class DiaryServiceController {
         return this._getList(options).$add(data);
     }
 
-    // removeItem(item) {
-    //     return this._getList().$remove(item);
-    // }
+    removeItem(item, options) {
+        const list = this._getList(options);
+        return list.$loaded()
+            .then(() => {
+                const record = list.$getRecord(item.$id);
+                return list.$remove(record);
+            })
+            .catch(error => {
+                throw Error(error);
+            });
+    }
 
-    // editItem(item) {
-    //     return this._getList().$save(item);
-    // }
+    editItem(data, options) {
+        const list = this._getList(options);
+        return list.$loaded()
+            .then(() => {
+                const record = list.$getRecord(data.$id);
+                const { time, shortName, weight, energy, carbohydrate, fat, protein } = data;
+                Object.assign(record, {
+                    shortName,
+                    carbohydrate,
+                    fat, 
+                    protein, 
+                    energy, 
+                    time, 
+                    weight
+                });
+                return list.$save(record);
+            })
+            .catch(error => {
+                throw Error(error);
+            });
+    }
 
     _getList(options) {
         const auth = this.AuthService.getAuth();

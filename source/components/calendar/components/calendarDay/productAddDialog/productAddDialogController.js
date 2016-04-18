@@ -1,20 +1,24 @@
 export default class ProductAddDialogController {
-    constructor($uibModalInstance, FoodService) {
+    constructor($uibModalInstance, FoodService, data) {
         this.$uibModalInstance = $uibModalInstance;
         this.FoodService = FoodService;
+        this._initForm(data);
+    }
+
+    _initForm(data) {
+        if (data) {
+            this.selectedItem = data;
+            this.weight = data.weight;
+            this.time = data.time;
+        }
     }
 
     onClickOk() {
-        const { shortName, protein, fat, energy, carbohydrate } = this.selectedItem;
-        this.$uibModalInstance.close({
-            shortName,
-            protein,
-            fat,
-            energy,
-            carbohydrate,
+        const options = Object.assign({}, this.selectedItem, {
             weight: this.weight,
             time: this.time
         });
+        this.$uibModalInstance.close(options);
     }
 
     onClickCansel() {
