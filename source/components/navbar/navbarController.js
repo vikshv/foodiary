@@ -33,6 +33,8 @@ export default class NavbarController {
             diary: this._getState('diary'),
             food: this._getState('food'),
             about: this._getState('about'),
+            login: this._getState('login'),
+            register: this._getState('register')
         };
     }
 
@@ -43,6 +45,10 @@ export default class NavbarController {
     _bindEvents() {
         this.$scope.$on('$stateChangeSuccess', () => {
             this._initState();
+        });
+
+        this.$scope.$on('$stateChangeError', () => {
+            debugger;
         });
 
         this.AuthService.onAuth(() => {

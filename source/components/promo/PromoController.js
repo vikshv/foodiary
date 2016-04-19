@@ -5,29 +5,19 @@ export default class PromoController {
     }
 
     begin() {
-        this._startBeginProgress();
+        this.progress = true;
         this.AuthService.authAnonymously()
             .then(() => {
                 this._gotoDiaryState();
             })
             .catch(error => {
-                this._stopBeginProgress();
+                this.progress = false;
                 throw Error(error);
             });
     }
 
     login() {
-
-    }
-
-    _startBeginProgress() {
-        this.progress = true;
-        this.beginProgress = true;
-    }
-
-    _stopBeginProgress() {
-        this.progress = false;
-        this.beginProgress = false;
+        this.$state.go('login');
     }
 
     _gotoDiaryState() {

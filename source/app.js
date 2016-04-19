@@ -13,6 +13,8 @@ import './components/diary';
 import './components/about';
 import './components/food';
 import promo from './components/promo';
+import login from './components/login';
+import register from './components/register';
 
 export default angular.module('app', [
     uiRouter,
@@ -26,5 +28,7 @@ export default angular.module('app', [
     'food',
     'calendar',
     'diary',
-    promo
+    promo,
+    login,
+    register
 ]);

@@ -31,4 +31,35 @@ export default class AuthServiceController {
     onAuth(callback) {
         this.auth.$onAuth(callback);
     }
+
+    authWithPassword(options) {
+        const { email, password, remember } = options;
+        return this.auth.$authWithPassword({
+            email,
+            password
+        })
+        .then(authData => {
+            this.authData = authData;
+        })
+        .catch(error => {
+            throw Error(error);
+        })
+    }
+
+    createUser(options) {
+        const { email, password } = options;
+        return this.auth.$createUser({
+            email,
+            password
+        })
+        .then(userData => {
+            return this.authWithPassword(options);
+        })
+        .then(authData => {
+            this.authData = authData;
+        })
+        .catch(error => {
+            throw Error(error);
+        })
+    }
 }

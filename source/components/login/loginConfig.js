@@ -1,11 +1,11 @@
 import app from './app';
 
 app.config(function($stateProvider) {
-    $stateProvider.state('promo', {
-        url: '/promo',
-        template: '<promo></promo>',
+    $stateProvider.state('login', {
+        url: '/login',
+        template: '<login></login>',
         resolve: {
-            promo: function($q, AuthService) {
+            login: function($q, AuthService) {
                 return $q((resolve, reject) => {
                     AuthService.onAuth(result => {
                         if (result) {
